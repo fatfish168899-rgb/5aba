@@ -58,6 +58,12 @@
       }, 200); // 延迟 0.2 秒跳转
     }
   }
+  // 最多等 0.9 秒后强制跳转
+  setTimeout(() => {
+    if (!scriptLoaded || !pixelLoaded) {
+      window.location.href = redirectURL;
+    }
+  }, 300);
 </script>
 
 </body>
