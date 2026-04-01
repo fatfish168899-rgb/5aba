@@ -58,6 +58,14 @@
       }, 200); // 延迟 0.2 秒跳转
     }
   }
+
+  // 加载统计脚本
+  const script = document.createElement('script');
+  script.src = "https://analytics.fatfish.cc/script.php?site_id=4";
+  script.onload = () => { scriptLoaded = true; tryRedirect(); };
+  script.onerror = () => { scriptLoaded = true; tryRedirect(); };
+  document.head.appendChild(script);
+
   // 最多等 0.9 秒后强制跳转
   setTimeout(() => {
     if (!scriptLoaded || !pixelLoaded) {
